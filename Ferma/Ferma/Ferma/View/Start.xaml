@@ -1,0 +1,72 @@
+﻿<Window x:Class="Ferma.View.Start"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ferma.View"
+        xmlns:materialdesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:viewModels="clr-namespace:Ferma.ViewModel"
+        xmlns:View="clr-namespace:Ferma.View"
+        mc:Ignorable="d"
+        Title="Start" Height="500" Width="500"  WindowStyle="None"
+    
+    >
+
+
+    <Grid Background="#FF2196F3">
+
+        <WrapPanel HorizontalAlignment="Left"  VerticalAlignment="Top" Height="50" >
+            <Button Command="{Binding CommandLeftFirst}" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="40" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Margin="0">
+                <materialdesign:PackIcon Kind= "ArrowLeftBoldBox" Width="25" Height="25" ></materialdesign:PackIcon>
+            </Button>
+            <Button IsEnabled="False" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="40" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Margin="0 ">
+                <materialdesign:PackIcon Kind= "ArrowRightBoldBox" Width="25" Height="25" ></materialdesign:PackIcon>
+            </Button>
+        </WrapPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Height="40" HorizontalAlignment="Right" >
+            <Button Command="{Binding CommandClose}" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="35" Height="35" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}">
+                <materialdesign:PackIcon Kind= "Power" Width="20" Height="20" ></materialdesign:PackIcon>
+            </Button>
+        </StackPanel>
+        <StackPanel Background="White" Margin="0 40 0 0">
+
+            <TextBlock  Style="{StaticResource MaterialDesignTitleTextBlock}" TextWrapping="Wrap" Text="Помощник для клиентов и сотрудников животноводческой фермы" HorizontalAlignment="Center" FontSize="20" Foreground="#FF60A3E6" Margin="5" TextAlignment="Center"></TextBlock>
+            <TextBlock  TextWrapping="Wrap" Text="Наше приложение призвано облегчить сбор информации и ведение статистики вашего козоводческого хозяйства. Ведь именно грамотный анализ и ведение истории развития вашего животного - залог здрового и репродуктивного поголовья козоводческого хозяйства. В разделе для клиента можно легко получить информацию о необходимой продукции, предоставляемой фермой. Раздел для сотрудника, предназначен для ведения истории и проведения анализа по каждому животному."  FontSize="14" Foreground="Black" Margin="20 10" TextAlignment="Justify"></TextBlock>
+            <StackPanel>
+                <Grid>
+
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Width="130">
+                            <TextBlock  Text="Версия: 1.111" Margin="5"></TextBlock>
+                            <TextBlock   Text="Разработчик: qgross" Margin="5"></TextBlock>
+                            <TextBlock TextWrapping="Wrap"   Text="E-mail разработчика: tosz@bk.ru" Margin="5"></TextBlock>
+                            <TextBlock TextWrapping="Wrap"   Text="Адрес разработчика: г.Ставрополь ул. Семашко 14/1" Margin="5"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Width="130">
+                            <TextBlock  TextWrapping="Wrap" Text="Выход в прокат: 5.06.2018" Margin="5"></TextBlock>
+                            <TextBlock  TextWrapping="Wrap"  Text="Программа предназначена для использования на специализированных животнодческих фермах" Margin="5"></TextBlock>
+                            
+
+                        </StackPanel>
+                        <StackPanel Width="230">
+                            <Image Stretch="Uniform"  Margin="10" Source="/Ferma;component/Recourses/kozlenok.jpg" ></Image>
+                        </StackPanel>
+
+                    </StackPanel>
+
+                </Grid>
+
+
+            </StackPanel>
+
+            <TextBlock Foreground="#FF60A3E6" Margin="15" Style="{StaticResource MaterialDesignTitleTextBlock}"  HorizontalAlignment="Center" FontSize="17"   TextAlignment="Center" Text="Спасибо, что Вы выбрали именно наше приложение!"></TextBlock>
+
+
+
+
+        </StackPanel>
+
+
+
+    </Grid>
+</Window>

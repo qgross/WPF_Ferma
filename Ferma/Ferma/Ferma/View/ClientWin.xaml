@@ -1,0 +1,125 @@
+﻿<Window x:Class="Ferma.View.ClientWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialdesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:Ferma.View"
+        mc:Ignorable="d"
+        Title="ClientWin" Height="620" Width="955" WindowStyle="None" WindowStartupLocation="CenterScreen" >
+
+    <Grid Background="#FF2196F3">
+
+        <WrapPanel HorizontalAlignment="Left"  VerticalAlignment="Top" Height="50" >
+            <Button Command="{Binding CommandLeftFirst}" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="40" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Margin="0">
+                <materialdesign:PackIcon Kind= "ArrowLeftBoldBox" Width="25" Height="25" ></materialdesign:PackIcon>
+            </Button>
+            <Button IsEnabled="False" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="40" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Margin="0 ">
+                <materialdesign:PackIcon Kind= "ArrowRightBoldBox" Width="25" Height="25" ></materialdesign:PackIcon>
+            </Button>
+        </WrapPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Height="40" HorizontalAlignment="Right" >
+            <Button Command="{Binding CommandClose}" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="35" Height="35" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}">
+                <materialdesign:PackIcon Kind= "Power" Width="20" Height="20" ></materialdesign:PackIcon>
+            </Button>
+        </StackPanel>
+
+        <StackPanel Margin="5 40 10 10">
+
+            <TabControl TabStripPlacement="Left">
+                <TabItem Header="Главная" Height="50" Width="230" FontSize="18"  Margin="-2,-2,-39,-2" HorizontalAlignment="Left" Background="#FF2196F3" FontFamily="Bell MT"   >
+                    <Grid Margin="5">
+                        <Grid.Background>
+                            <ImageBrush ImageSource="/Ferma;component/Recourses/pole-podsolnuhi-les-gora-nebo.jpg" Stretch="UniformToFill" Opacity="0.3"></ImageBrush>
+                        </Grid.Background>
+                        <StackPanel Margin="20" Height="500">
+                            <TextBlock  Style="{StaticResource MaterialDesignTitleTextBlock}" TextWrapping="Wrap" Text="Приветствуем клиента животноводческой фермы!" HorizontalAlignment="Center" FontSize="22" Foreground="#FF2196F3" Margin="64,30,54,10" TextAlignment="Center"/>
+                            <StackPanel  Margin="50 30" Orientation="Horizontal">
+                                <StackPanel Width="100">
+                                    <TextBlock  Text="Фамилия:" HorizontalAlignment="Left" FontSize="14" TextAlignment="Center" Foreground="Black" Margin="5"/>
+                                    <TextBlock  Text="Имя:" HorizontalAlignment="Left" FontSize="14" TextAlignment="Center" Foreground="Black" Margin="5"/>
+                                    <TextBlock  Text="Отчество:" HorizontalAlignment="Left" FontSize="14" TextAlignment="Center" Foreground="Black" Margin="5"/>
+                                    <TextBlock  Text="Пол:" HorizontalAlignment="Left" TextAlignment="Center" FontSize="14" Foreground="Black" Margin="5"/>
+                                    <TextBlock   Text="Ваш логин:" HorizontalAlignment="Left" FontSize="14" TextAlignment="Center" Foreground="Black" Margin="5"/>
+
+                                </StackPanel>
+                                <StackPanel >
+                                    <TextBox IsReadOnly="True"  Text="{Binding MainClient.Surname}" Margin="5 0 0 0"  FontSize="14" FontStyle="Italic" TextAlignment="Center" Foreground="Black"/>
+                                    <TextBox IsReadOnly="True" Text="{Binding MainClient.Name}" Margin="5 0 0 0" FontSize="14" TextAlignment="Center" FontStyle="Italic" Foreground="Black" />
+                                    <TextBox IsReadOnly="True" Text="{Binding MainClient.Middlename}"  Margin="5 0 0 0"  FontSize="14" TextAlignment="Center" FontStyle="Italic" Foreground="Black"/>
+                                    <TextBox IsReadOnly="True"  Text="{Binding MainClient.GenderClient}"     FontSize="14" TextAlignment="Center" Foreground="Black" FontStyle="Italic" Margin="5"/>
+                                    <TextBox IsReadOnly="True"  Text="{Binding MainClient.Login}" Margin="5 0 0 0"  FontSize="14"  TextAlignment="Center" FontStyle="Italic" Foreground="Black" />
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Сделать заказ" Width="230" FontFamily="Bel MT" Margin="-2,-2,1,-2"  Height="50"  FontSize="18" Background="#FF2196F3"   >
+                    <StackPanel   Margin="20" Height="510" >
+                        <DataGrid Height="250" SelectionMode="Single" IsReadOnly="True" CanUserAddRows="False" ItemsSource="{Binding Products.VirtualDatabase}" AutoGenerateColumns="False" SelectedItem="{Binding ParameterProduct}" x:Name="datagridproduct">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Специализация" Binding="{Binding Specialization}" />
+                                <DataGridTextColumn Header="Порода" Binding="{Binding Breed}" />
+                                <DataGridTextColumn Header="Пол"  Binding="{Binding Gender}"/>
+                                <DataGridTextColumn Header="Дата рождения"  Binding="{Binding DOB}"/>
+                                <DataGridTextColumn Header="Номер"  Binding="{Binding Number}"/>
+                                <DataGridTextColumn Header="Молоко"  Binding="{Binding Milk}"/>
+                                <DataGridTextColumn Header="Вес"  Binding="{Binding Weight}"/>
+                                <DataGridTextColumn Header="Цена"  Binding="{Binding Price}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <StackPanel   Margin="20" Orientation="Horizontal" HorizontalAlignment="Center" >
+                            <StackPanel Width="180">
+                                <TextBlock   Text="Специализация" HorizontalAlignment="Left" FontSize="14" TextAlignment="Center" Foreground="Black" Margin="5" FontFamily="Bell MT" />
+                                <TextBlock   Text="Порода животного" HorizontalAlignment="Left" FontSize="14" TextAlignment="Center" Foreground="Black" Margin="5" FontFamily="Bell MT"/>
+                                <TextBlock   Text="Пол и тип животного" HorizontalAlignment="Left" FontSize="14" TextAlignment="Center" Foreground="Black" Margin="5" FontFamily="Bell MT" />
+                                <TextBlock   Text="Ивентарный номер" HorizontalAlignment="Left" FontSize="14" TextAlignment="Center" Foreground="Black" Margin="5" FontFamily="Bell MT"/>
+                                <TextBlock   Text="Цена" HorizontalAlignment="Left" FontSize="14" TextAlignment="Center" Foreground="Black" Margin="5" FontFamily="Bell MT"/>
+
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBox IsReadOnly="True" Text="{Binding SelectedItem.Specialization, ElementName=datagridproduct}" Margin="5 0 0 0"   FontSize="14" FontStyle="Italic" ></TextBox>
+                                <TextBox IsReadOnly="True" Text="{Binding SelectedItem.Breed, ElementName=datagridproduct}" Margin="5 0 0 0" FontSize="14" FontStyle="Italic" ></TextBox>
+                                <TextBox IsReadOnly="True" Text="{Binding SelectedItem.Gender, ElementName=datagridproduct}" Margin="5 0 0 0"   FontSize="14" FontStyle="Italic" ></TextBox>
+                                <TextBox IsReadOnly="True" Text="{Binding SelectedItem.Number, ElementName=datagridproduct}"  Margin="5 0 0 0"   FontSize="14" FontStyle="Italic" />
+                                <TextBox IsReadOnly="True" Text="{Binding SelectedItem.Price, ElementName=datagridproduct}"  Margin="5 0 0 0"  FontSize="14" FontStyle="Italic" />
+                            </StackPanel>
+                        </StackPanel>
+                        <Button   Content="Сделать заказ" Width="300" Margin="10" Command="{Binding MakeOrder}"></Button>
+
+                        
+                    </StackPanel>
+                </TabItem>
+
+                <TabItem Header="Информация о заказе" Height="50" Width="230" FontFamily="Bell MT" Margin="-2,-2,1,-2" FontSize="18" Background="#FF2196F3" >
+                    <StackPanel  Margin="20 20" Height="510">
+                        <DataGrid Height="400" SelectionMode="Single" IsReadOnly="True" CanUserAddRows="False" ItemsSource="{Binding  OrderFillter}"  SelectedItem="{Binding ParameterOrder}" AutoGenerateColumns="False" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Специализация" Binding="{Binding OrderSpecialization}" />
+                                <DataGridTextColumn Header="Порода" Binding="{Binding OrderBreed}" />
+                                <DataGridTextColumn Header="Пол"  Binding="{Binding OrderGender}"/>
+                                <DataGridTextColumn Header="Номер"  Binding="{Binding OrderNumber}"/>
+                                <DataGridTextColumn Header="Цена"  Binding="{Binding OrderPrice}"/>
+                                <DataGridTextColumn Header="Статус"  Binding="{Binding Status}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Button Margin="30" Width="300" Content="Удалить заказ" Command="{Binding DeleteOrder}"></Button>
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+
+
+
+
+
+        </StackPanel>
+
+
+
+
+
+
+
+    </Grid>
+
+</Window>
